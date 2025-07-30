@@ -1,9 +1,11 @@
 package ru.greatstep.redislesson.controllers;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import ru.greatstep.redislesson.models.dto.TokenDto;
 import ru.greatstep.redislesson.models.dto.UserDto;
@@ -25,5 +27,15 @@ public class UserController {
     @PostMapping("/validate")
     public boolean validate(@RequestHeader(name = "token") String token) {
         return tokenService.validateToken(token);
+    }
+
+    @PostMapping("/create-user")
+    public UserDto createUser(@RequestBody UserDto userDto) {
+        return userService.createUser(userDto);
+    }
+
+    @GetMapping("/user")
+    public UserDto getUser(@RequestParam String username) {
+        return userService.getUser(username);
     }
 }
