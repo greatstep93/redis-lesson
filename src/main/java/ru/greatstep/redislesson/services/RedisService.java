@@ -38,4 +38,8 @@ public class RedisService {
     public UserEntity getUserEntity(String username) {
         return userEntityRedisTemplate.opsForValue().get(username);
     }
+
+    public void deleteUserEntity(String username) {
+        userEntityRedisTemplate.delete(username);
+    }
 }
