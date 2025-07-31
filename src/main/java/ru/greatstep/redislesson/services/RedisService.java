@@ -42,4 +42,8 @@ public class RedisService {
     public void deleteUserEntity(String username) {
         userEntityRedisTemplate.delete(username);
     }
+
+    public void deleteKey(String key) {
+        redisTemplate.delete(key);
+    }
 }
