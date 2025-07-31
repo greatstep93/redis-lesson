@@ -1,5 +1,6 @@
 package ru.greatstep.redislesson.controllers;
 
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -33,7 +34,7 @@ public class UserController {
     }
 
     @PostMapping("/create-user")
-    public UserDto createUser(@RequestBody UserDto userDto) {
+    public UserDto createUser(@RequestBody @Valid UserDto userDto) {
         return userService.createUser(userDto);
     }
 

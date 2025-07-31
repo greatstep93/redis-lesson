@@ -29,6 +29,7 @@ public class RedisService {
 
     public void saveUserEntity(UserEntity userEntity) {
         userEntityRedisTemplate.opsForValue().set(userEntity.getUsername(), userEntity);
+
     }
 
     public void saveUserEntityWithExpiration(UserEntity userEntity, Duration duration) {
